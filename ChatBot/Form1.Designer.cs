@@ -1,4 +1,6 @@
-﻿namespace ChatBot
+﻿using System;
+
+namespace ChatBot
 {
     partial class Form1
     {
@@ -110,6 +112,9 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Button button1;
+        //private EventHandler textBox1_TextChanged;
+
+        //public EventHandler Form1_Load { get; private set; }
     }
 }
 

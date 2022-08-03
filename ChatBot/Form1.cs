@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Speech.Synthesis;
 using System.Windows.Forms;
+using AIMLbot;
 
 namespace ChatBot
 {
@@ -29,7 +24,20 @@ namespace ChatBot
 
         private void button1_Click(object sender, EventArgs e)
         {
+            Bot AI = new Bot();
+            AI.loadSettings();
+            AI.loadAIMLFromFiles();
+            AI.isAcceptingUserInput = false;
 
+            User myUser = new User("your name", AI);
+            AI.isAcceptingUserInput = true;
+            Request r = new Request(textBox2.Text, myUser, AI);
+            Result res = AI.Chat(r);
+            textBox1.Text = "bot: " + res.Output;
+
+            //codigo para o bot falar
+            SpeechSynthesizer speech = new SpeechSynthesizer();
+            speech.Speak(res.Output);
         }
     }
 }
